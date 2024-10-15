@@ -20,6 +20,7 @@ mysql> CREATE DATABASE forcolin;
 mysql> CREATE USER 'colin'@'localhost' IDENTIFIED BY 'password';  
 mysql> GRANT ALL PRIVILEGES ON forcolin.* TO 'colin'@'localhost';  
 mysql> FLUSH PRIVILEGES;  
+mysql> USE forcolin;  
 mysql> CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, username varchar(60) NOT NULL, password varchar(255) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);  
 mysql> INSERT INTO users (username, password) VALUES ('colin', 'password');  
 mysql> EXIT;  
