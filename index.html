@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+	<title>For Colin</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+	<h3>Login</h3>
+	<br />
+	<input type="text" id="username" name="username" />
+	<br />
+	<input type="password" id="password" name="password" />
+	<br />
+	<button type="button" onclick="doStuff()">Submit</button>
+</body>
+<script>
+	function doStuff() {
+		const data = {
+			username: document.getElementById('username').value,
+			password: document.getElementById('password').value
+		};
+
+		// Options for the fetch request
+		const requestOptions = {
+			method: 'POST', // HTTP method
+			headers: {
+				'Content-Type': 'application/json' // Sending JSON data
+			},
+			body: JSON.stringify(data) // Convert the data to a JSON string
+		};
+
+		// Sending the request to the server
+		fetch('login.php', requestOptions)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error('Network response was not ok ' + response.statusText);
+				}
+				
+				if (response.ok) {
+					window.location = response.url
+				}
+			})
+			.then(data => {
+				console.log('Success:', data); // Handle the response data
+			})
+			.catch(error => {
+				console.error('Error:', error); // Handle any errors
+			})
+	}
+</script>
+
+</html>
