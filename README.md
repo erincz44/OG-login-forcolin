@@ -16,8 +16,9 @@ $ ngrok config add-authtoken <my_auth_token>
 
 // setup database for project  
 $ sudo mysql  
-mysql> CREATE TABLE forcolin;  
+mysql> CREATE DATABASE forcolin;  
 mysql> CREATE USER 'colin'@'localhost' IDENTIFIED BY 'password';  
+mysql> GRANT ALL PRIVILEGES ON forcolin.* TO 'colin'@'localhost';  
 mysql> FLUSH PRIVILEGES;  
 mysql> CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, username varchar(60) NOT NULL, password varchar(255) NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);  
 mysql> INSERT INTO users (username, password) VALUES ('colin', 'password');  
@@ -27,7 +28,7 @@ mysql> EXIT;
 
 // git init and commit, push  
 $ git init  
-$ git add . 
+$ git add .  
 $ git commit -m "first commit"  
 $ git branch -M main  
 $ git remote add origin https://github.com/erincz44/OG-login-forcolin.git  
